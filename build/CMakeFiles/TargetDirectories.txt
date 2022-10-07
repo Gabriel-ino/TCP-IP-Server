@@ -1,0 +1,3 @@
+/home/gabriel-c/tcp_server/build/CMakeFiles/TCPServer.dir
+/home/gabriel-c/tcp_server/build/CMakeFiles/edit_cache.dir
+/home/gabriel-c/tcp_server/build/CMakeFiles/rebuild_cache.dir
