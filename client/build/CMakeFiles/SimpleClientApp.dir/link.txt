@@ -1,0 +1,1 @@
+/usr/bin/c++ -rdynamic CMakeFiles/SimpleClientApp.dir/tcpclient.cpp.o -o SimpleClientApp 

@@ -35,6 +35,8 @@ class TCPServerController{
 		const void Start();
 		const void Stop();
 
+		const void ProcessNewClient(TCPClient *tcp_client);
+
 
 	};
 

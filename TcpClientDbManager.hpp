@@ -18,6 +18,7 @@ class TCPClientDbManager{
 		TCPClientDbManager(TCPServerController *tcp_ctrl): tcp_ctrl(tcp_ctrl) {};
 
 		const void StartDbManager();
+		const void AddClientToDb(TCPClient *tcp_client);
 
 };
 

@@ -13,5 +13,10 @@ const void TCPServerController::Stop(){
 }
 
 
+const void TCPServerController::ProcessNewClient(TCPClient *tcp_client){
+    tcp_client_db_mgr->AddClientToDb(tcp_client);
+
+    tcp_client_svc_mgr->ClientFDStart();
+}
 
 

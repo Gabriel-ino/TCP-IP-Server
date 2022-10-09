@@ -1,5 +1,7 @@
 #include "TcpNewConnectionAcceptor.hpp"
 #include "NetworkUtils.hpp"
+#include "TcpClient.hpp"
+
 
 const void TCPNewConnectionAcceptor::StartTCPNewAcceptorThreadInternal(){
 
@@ -42,7 +44,16 @@ const void TCPNewConnectionAcceptor::StartTCPNewAcceptorThreadInternal(){
             continue;
         }
 
-        std::cout << "Connection accepted from client[" << networkUtils.network_n_to_p(client_addr.sin_addr.s_addr, 0) << ", " << client_addr.sin_port << '\n';
+        auto client = std::make_shared<TCPClient>(client_addr.sin_addr.s_addr, client_addr.sin_port);
+
+        client->tcp_ctrl = tcp_ctrl;
+        client->comm_fd = comm_sock_fd;
+
+        tcp_ctrl->ProcessNewClient(client);
+
+        uint32_t ip_val = htonl(client_addr.sin_addr.s_addr);
+
+        std::cout << "Connection accepted from client[" << networkUtils.network_n_to_p(ip_val, 0) << ", " << client_addr.sin_port << "]\n";
     }
 }
 
@@ -62,4 +73,5 @@ const void TCPNewConnectionAcceptor::StartTCPNewAcceptorThread(){
 
     std::cout << "Service Started!\n";
 }
+
 
