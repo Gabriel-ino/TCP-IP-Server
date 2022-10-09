@@ -8,6 +8,8 @@
 
 #include "TcpClientDbManager.hpp"
 #include "TcpClientServiceManager.hpp"
+
+class TCPNewConnectionAcceptor;
 #include "TcpNewConnectionAcceptor.hpp"
 #include "NetworkUtils.hpp"
 

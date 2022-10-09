@@ -5,7 +5,7 @@ const void TCPServerController::Start(){
     tcp_client_svc_mgr->StartTcpClientServiceManagerThread();
     tcp_client_db_mgr->StartDbManager();
 
-    std::cout << "Server running at: (" << network_utils->network_n_to_p(ip_addr, 0) << ',' << port << ")\n";
+    std::cout << "Server running at: (" << network_utils->network_n_to_p(ip_addr, 0) << ", " << port << ")\n";
 }
 
 const void TCPServerController::Stop(){
