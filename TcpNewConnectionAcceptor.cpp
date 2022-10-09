@@ -49,7 +49,13 @@ const void TCPNewConnectionAcceptor::StartTCPNewAcceptorThreadInternal(){
         client->tcp_ctrl = tcp_ctrl;
         client->comm_fd = comm_sock_fd;
 
-        tcp_ctrl->ProcessNewClient(client);
+        //if (tcp_ctrl->client_connected){
+
+        tcp_ctrl->client_connected(tcp_ctrl, client.get());
+
+      //  }
+
+        tcp_ctrl->ProcessNewClient(client.get());
 
         uint32_t ip_val = htonl(client_addr.sin_addr.s_addr);
 

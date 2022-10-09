@@ -31,7 +31,6 @@ class TCPNewConnectionAcceptor{
         const void StartTCPNewAcceptorThread();
         const void StartTCPNewAcceptorThreadInternal();
 
-
 };
 
 #endif

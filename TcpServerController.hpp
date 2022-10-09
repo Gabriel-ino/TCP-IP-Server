@@ -7,6 +7,8 @@
 #include <memory>
 
 #include "TcpClientDbManager.hpp"
+
+class TCPClientServiceManager;
 #include "TcpClientServiceManager.hpp"
 
 class TCPNewConnectionAcceptor;
@@ -35,14 +37,21 @@ class TCPServerController{
 		const void Start();
 		const void Stop();
 
+		void(*client_connected)(const TCPServerController *, const TCPClient *);
+		void(*client_disconnected)(const TCPServerController *, const TCPClient *);
+		void (*client_msg_rvcd)(const TCPServerController *, const TCPClient *, unsigned char*, uint16_t);
+
+
+		const void SetServerNotifyCallbacks(
+			void(*client_connected)(const TCPServerController *, const TCPClient *),
+			void(*client_disconnected)(const TCPServerController *, const TCPClient *),
+			void (*client_msg_rvcd)(const TCPServerController *, const TCPClient *, unsigned char*, uint16_t)
+		);
+
 		const void ProcessNewClient(TCPClient *tcp_client);
 
 
 	};
-
-
-
-
 
 
 #endif

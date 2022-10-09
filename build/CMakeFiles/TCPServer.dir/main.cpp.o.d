@@ -171,6 +171,7 @@ CMakeFiles/TCPServer.dir/main.cpp.o: /home/gabriel-c/tcp_server/main.cpp \
  /usr/include/c++/11/bits/stl_bvector.h \
  /usr/include/c++/11/bits/vector.tcc \
  /home/gabriel-c/tcp_server/TcpClientServiceManager.hpp \
+ /home/gabriel-c/tcp_server/TcpClient.hpp \
  /home/gabriel-c/tcp_server/TcpNewConnectionAcceptor.hpp \
  /usr/include/arpa/inet.h /usr/include/netinet/in.h \
  /usr/include/x86_64-linux-gnu/sys/socket.h \
