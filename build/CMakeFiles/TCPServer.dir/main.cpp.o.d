@@ -170,11 +170,8 @@ CMakeFiles/TCPServer.dir/main.cpp.o: /home/gabriel-c/tcp_server/main.cpp \
  /usr/include/c++/11/vector /usr/include/c++/11/bits/stl_vector.h \
  /usr/include/c++/11/bits/stl_bvector.h \
  /usr/include/c++/11/bits/vector.tcc \
- /home/gabriel-c/tcp_server/TcpClientServiceManager.hpp \
- /home/gabriel-c/tcp_server/TcpClient.hpp \
- /home/gabriel-c/tcp_server/TcpNewConnectionAcceptor.hpp \
- /usr/include/arpa/inet.h /usr/include/netinet/in.h \
- /usr/include/x86_64-linux-gnu/sys/socket.h \
+ /home/gabriel-c/tcp_server/TcpClient.hpp /usr/include/arpa/inet.h \
+ /usr/include/netinet/in.h /usr/include/x86_64-linux-gnu/sys/socket.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h \
  /usr/include/x86_64-linux-gnu/bits/socket.h \
  /usr/include/x86_64-linux-gnu/bits/socket_type.h \
@@ -192,4 +189,6 @@ CMakeFiles/TCPServer.dir/main.cpp.o: /home/gabriel-c/tcp_server/main.cpp \
  /usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h \
  /usr/include/x86_64-linux-gnu/bits/in.h \
  /home/gabriel-c/tcp_server/NetworkUtils.hpp /usr/include/c++/11/cstring \
- /usr/include/string.h /usr/include/strings.h
+ /usr/include/string.h /usr/include/strings.h \
+ /home/gabriel-c/tcp_server/TcpClientServiceManager.hpp \
+ /home/gabriel-c/tcp_server/TcpNewConnectionAcceptor.hpp

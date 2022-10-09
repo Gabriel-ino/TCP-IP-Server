@@ -29,5 +29,12 @@ const void TCPServerController::SetServerNotifyCallbacks(
     this->client_msg_rvcd = client_msg_rvcd;
 }
 
+const void TCPServerController::Display(){
+    std::cout << "Server Name: " << this->m_Name << '\n';
+    std::cout << "Listening on: [" << network_utils->network_n_to_p(this->ip_addr, 0) << ", " << this->port << '\n';
+
+    this->tcp_client_db_mgr->DisplayClientDb();
+}
+
         
 

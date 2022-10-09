@@ -46,9 +46,9 @@ int main(int argc, char** argv){
     TCPServerController *server = new TCPServerController(ip, PORT, name);
     server->Start();
     server->SetServerNotifyCallbacks(app_client_connected, app_client_disconnected, app_client_received);
+    
     std::cin.get();
-    std::cout << "Closing server connection...\n";
-    server->Stop();
+    server->Display();
 
     delete server;
 

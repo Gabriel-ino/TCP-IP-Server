@@ -5,6 +5,8 @@
 
 
 class TCPClient;
+#include "TcpClient.hpp"
+
 class TCPServerController;
 
 
@@ -19,6 +21,7 @@ class TCPClientDbManager{
 
 		const void StartDbManager();
 		const void AddClientToDb(TCPClient *tcp_client);
+		const void DisplayClientDb();
 
 };
 

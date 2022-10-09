@@ -6,6 +6,7 @@
 #include <string>
 #include <memory>
 
+class TCPClientDbManager;
 #include "TcpClientDbManager.hpp"
 
 class TCPClientServiceManager;
@@ -22,7 +23,8 @@ class TCPServerController{
 	std::shared_ptr<TCPClientDbManager> tcp_client_db_mgr = std::make_shared<TCPClientDbManager>(this);
 	std::shared_ptr<TCPClientServiceManager> tcp_client_svc_mgr = std::make_shared<TCPClientServiceManager>(this);
 
-	std::unique_ptr<Utils> network_utils = std::make_unique<Utils>();
+	protected:
+		std::unique_ptr<Utils> network_utils = std::make_unique<Utils>();
 
 
 
@@ -49,6 +51,8 @@ class TCPServerController{
 		);
 
 		const void ProcessNewClient(TCPClient *tcp_client);
+
+		const void Display();
 
 
 	};
