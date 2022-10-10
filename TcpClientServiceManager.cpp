@@ -1,6 +1,7 @@
 #include "TcpClientServiceManager.hpp"
 
 
+
 void * tcp_client_svc_manager_thread_fn(void *arg){
     TCPClientServiceManager *svc_manager = (TCPClientServiceManager *)arg;
     svc_manager->StartTcpClientServiceManagerThreadInternal();
@@ -24,7 +25,7 @@ const void TCPClientServiceManager::StartTcpClientServiceManagerThreadInternal()
 
             if(FD_ISSET(tcp_client->comm_fd, &this->active_fd_set)){
                 recv_bytes = recvfrom(tcp_client->comm_fd,
-                                     client_recv_buffer,
+                                     client_received_buffer,
                                      TCP_CLIENT_RECV_BUFFER_SIZE,
                                      0,
                                      (struct sockaddr *)&client_addr, &addr_len);
@@ -32,7 +33,7 @@ const void TCPClientServiceManager::StartTcpClientServiceManagerThreadInternal()
 
                 if (this->tcp_ctrl->client_msg_rvcd){
                     this->tcp_ctrl->client_msg_rvcd(this->tcp_ctrl, tcp_client,
-                                                    client_recv_buffer, recv_bytes);
+                                                    client_received_buffer, recv_bytes);
                 }
 
             }
@@ -67,4 +68,9 @@ const int TCPClientServiceManager::GetMaxFd(){
     return max_fd_lcl;
 }
 
+const void TCPClientServiceManager::CopyClientFDToFDSet(fd_set *fdset) {
+		for (auto &i:tcp_client_db){
+        	FD_SET(i->comm_fd, fdset);
+    	}	
+	}
 

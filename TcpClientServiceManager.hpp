@@ -7,12 +7,10 @@
 #include <stdlib.h>
 #include <memory>
 
-
 #include "TcpClient.hpp"
 
 #define TCP_CLIENT_RECV_BUFFER_SIZE 1024
-
-unsigned char client_recv_buffer[TCP_CLIENT_RECV_BUFFER_SIZE];
+static unsigned char client_received_buffer[TCP_CLIENT_RECV_BUFFER_SIZE];
 
 class TCPServerController;
 
@@ -31,11 +29,7 @@ class TCPClientServiceManager{
 
 	const int GetMaxFd();
 
-	inline void CopyClientFDToFDSet(fd_set *fdset) const {
-		for (auto &i:tcp_client_db){
-        	FD_SET(i->comm_fd, fdset);
-    	}	
-	}
+	const void CopyClientFDToFDSet(fd_set *fdset);
 
 	public:
 		TCPClientServiceManager(TCPServerController *tcp_ctrl): tcp_ctrl(tcp_ctrl){
