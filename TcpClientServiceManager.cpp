@@ -16,6 +16,12 @@ const void TCPClientServiceManager::StartTcpClientServiceManagerThreadInternal()
 
     socklen_t addr_len = sizeof(client_addr);
 
+    this->max_fd = this->GetMaxFd();
+
+    FD_ZERO(&backup_fd_set);
+
+    CopyClientFDToFDSet(&backup_fd_set);
+
     while (1){
         memcpy(&this->active_fd_set, &this->backup_fd_set, sizeof(fd_set));
         select(this->max_fd+1, &this->active_fd_set, 0, 0, 0);
