@@ -4,7 +4,11 @@
 
 void * tcp_client_svc_manager_thread_fn(void *arg){
     TCPClientServiceManager *svc_manager = (TCPClientServiceManager *)arg;
+    pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL);
+    pthread_setcancelstate(PTHREAD_CANCEL_DEFERRED, NULL);
+
     svc_manager->StartTcpClientServiceManagerThreadInternal();
+
     return NULL;
 }
 
@@ -80,3 +84,10 @@ const void TCPClientServiceManager::CopyClientFDToFDSet(fd_set *fdset) {
     	}	
 	}
 
+
+const void TCPClientServiceManager::StopTcpClientServiceManagerThread(){
+    pthread_cancel(*client_svc_mgr_thread);
+    pthread_join(*client_svc_mgr_thread, NULL);
+    free(client_svc_mgr_thread);
+    client_svc_mgr_thread = NULL;
+}

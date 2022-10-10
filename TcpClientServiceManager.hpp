@@ -39,6 +39,7 @@ class TCPClientServiceManager{
 		};
 
 		const void StartTcpClientServiceManagerThread();
+		const void StopTcpClientServiceManagerThread();
 		const void StartTcpClientServiceManagerThreadInternal();
 		const void ClientFDStartListen(TCPClient *tcp_client);
 };
