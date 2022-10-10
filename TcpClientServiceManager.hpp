@@ -1,8 +1,18 @@
 #ifndef TCPCLIENTSERVICEMANAGER_HPP
 #define TCPCLIENTSERVICEMANAGER_HPP
 
-#include "TcpClient.hpp"
 #include <vector>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <stdlib.h>
+#include <memory>
+
+
+#include "TcpClient.hpp"
+
+#define TCP_CLIENT_RECV_BUFFER_SIZE 1024
+
+unsigned char client_recv_buffer[TCP_CLIENT_RECV_BUFFER_SIZE];
 
 class TCPServerController;
 

@@ -8,6 +8,38 @@ void * tcp_client_svc_manager_thread_fn(void *arg){
 }
 
 const void TCPClientServiceManager::StartTcpClientServiceManagerThreadInternal(){
+    int recv_bytes;
+    TCPClient *tcp_client, *next_tcp_client;
+
+    struct sockaddr_in client_addr;
+
+    socklen_t addr_len = sizeof(client_addr);
+
+    while (1){
+        memcpy(&this->active_fd_set, &this->backup_fd_set, sizeof(fd_set));
+        select(this->max_fd+1, &this->active_fd_set, 0, 0, 0);
+
+        for (auto &i:tcp_client_db){
+            next_tcp_client = ++i;
+
+            if(FD_ISSET(tcp_client->comm_fd, &this->active_fd_set)){
+                recv_bytes = recvfrom(tcp_client->comm_fd,
+                                     client_recv_buffer,
+                                     TCP_CLIENT_RECV_BUFFER_SIZE,
+                                     0,
+                                     (struct sockaddr *)&client_addr, &addr_len);
+
+
+                if (this->tcp_ctrl->client_msg_rvcd){
+                    this->tcp_ctrl->client_msg_rvcd(this->tcp_ctrl, tcp_client,
+                                                    client_recv_buffer, recv_bytes);
+                }
+
+            }
+            tcp_client = next_tcp_client;
+        }
+
+    }
 
 }
 
