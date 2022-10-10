@@ -7,6 +7,10 @@ void * tcp_client_svc_manager_thread_fn(void *arg){
     return NULL;
 }
 
+const void TCPClientServiceManager::StartTcpClientServiceManagerThreadInternal(){
+
+}
+
 const void TCPClientServiceManager::StartTcpClientServiceManagerThread(){
     pthread_attr_t attr;
     pthread_attr_init (&attr);
@@ -15,6 +19,20 @@ const void TCPClientServiceManager::StartTcpClientServiceManagerThread(){
 
 const void TCPClientServiceManager::ClientFDStartListen(TCPClient *tcp_client){
     
+}
+
+
+const int TCPClientServiceManager::GetMaxFd(){
+    int max_fd_lcl{0};
+
+    for(auto &i:tcp_client_db){
+        if (i->comm_fd > max_fd_lcl){
+            max_fd_lcl = i->comm_fd;
+        }
+
+    }
+
+    return max_fd_lcl;
 }
 
 

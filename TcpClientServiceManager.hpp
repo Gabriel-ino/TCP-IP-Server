@@ -19,6 +19,14 @@ class TCPClientServiceManager{
 	TCPServerController *tcp_ctrl;
 	std::vector<TCPClient *>tcp_client_db;
 
+	const int GetMaxFd();
+
+	inline void CopyClientFDToFDSet(fd_set *fdset) const {
+		for (auto &i:tcp_client_db){
+        	FD_SET(i->comm_fd, fdset);
+    	}	
+	}
+
 	public:
 		TCPClientServiceManager(TCPServerController *tcp_ctrl): tcp_ctrl(tcp_ctrl){
 			FD_ZERO(&active_fd_set);
